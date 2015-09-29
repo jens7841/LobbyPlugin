@@ -1,0 +1,7 @@
+noPermissions: '&cDu besitzt keine Rechte dafür!'
+reloadComplete: '&aDas LobbyPlugin wurde neu geladen!'
+joinMessage: '&e{0} ist beigetreten.'
+leaveMessage: '&e{0} hat das Spiel verlassen.'
+showMessage: '&aDu hast alle Spieler sichtbar gemacht.'
+hideMessage: '&cDu hast alle Spieler unsichtbar gemacht.'
+cooldownMessage: '&cDu musst kurz warten bevor du das Item wieder benutzen kannst!'

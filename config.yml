@@ -1,0 +1,77 @@
+LobbyTeleporter:
+  Enable: true
+  Item: Compass
+  ItemDamage: 0
+  Amount: 1
+  ItemName: '&bNavigation'
+  Lores:
+    - '&aRechtsklick zum benutzen'
+    - '&2Zweite Zeile'
+  Slot: 0
+  InventorySize: 1
+  InventoryName: '&bNavigation'
+  
+  Items:
+    1:
+      Item: log
+      ItemDamage: 1
+      Amount: 1
+      ItemName: '&3Spawn'
+      Lores:
+        - '&aTeleport zum Spawn'
+        - '&bZweite Zeile...'
+      Slot: 0
+      Teleport: true
+      World: world
+      x: -200
+      y: 69
+      z: -208
+      yaw: 0
+      pitch: 0
+      sendMessage: true
+      Message: '&aDu wurdest zum Spawn teleportiert!'
+    2:
+      Item: log
+      ItemDamage: 2
+      Amount: 1
+      ItemName: '&3Soon'
+      Lores:
+        - '&aIrgendwas Tolles'
+        - '&bZweite Zeile...'
+      Slot: 4
+      Teleport: false
+      World: world
+      x: 0
+      y: 0
+      z: 0
+      yaw: 0
+      pitch: 0
+      sendMessage: true
+      Message: '&aBald verfügbar!'
+HidePlayersTool:
+  Slot: 1
+  Enable: true
+  Cooldown: 5
+  HidePlayersItem:
+    Item: blaze_rod
+    ItemDamage: 0
+    Amount: 1
+    ItemName: '&aKlicke um die Spieler zu unsichtbar zu machen'
+    Lores:
+      - 'Rechtsklick um das Item zu benutzen'
+      - '............'
+    sendMessage: true
+    showParticleEffect: true
+    playSoundEffect: true
+  ShowPlayersItem:
+    Item: stick
+    ItemDamage: 0
+    Amount: 1
+    ItemName: '&eKlicke um die Spieler sichtbar zu machen'
+    Lores:
+      - 'Rechtsklick um das item zu benutzen'
+      - '............'
+    sendMessage: true
+    showParticleEffect: true
+    playSoundEffect: true
+Language: 'de'

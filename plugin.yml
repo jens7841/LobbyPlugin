@@ -1,0 +1,8 @@
+name: LobbyPlugin
+version: 2.0
+main: lobbyplugin.jens7841.main.LobbyPlugin
+commands:
+  lobbyplugin:
+    usage: /lobbyplugin
+    description: Command for the LobbyPlugin
+    aliases: lp
