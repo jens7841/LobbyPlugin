@@ -2,6 +2,9 @@ package lobbyplugin.jens7841.main;
 
 public class Permissions {
 
+	private Permissions() {
+	}
+
 	public static final String PREFIX = "lobbyplugin.";
 
 	/*
@@ -21,5 +24,7 @@ public class Permissions {
 	 */
 	public static final String HIDE_PLAYERS_TOOL_PREFIX = PREFIX + "hideplayerstool.";
 	public static final String HIDE_PLAYERS_TOOL_USE = HIDE_PLAYERS_TOOL_PREFIX + "use";
+
+	public static final String COMMAND_TELEPORTER_CHANGEITEM = null;
 
 }

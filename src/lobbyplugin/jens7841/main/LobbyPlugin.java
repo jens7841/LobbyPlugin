@@ -16,6 +16,7 @@ public class LobbyPlugin extends JavaPlugin {
 		getCommand("lobbyplugin").setExecutor(new LobbyPluginCommand());
 		Bukkit.getPluginManager().registerEvents(new EventListener(), this);
 
+		PluginSettings.loadSettings();
 	}
 
 }

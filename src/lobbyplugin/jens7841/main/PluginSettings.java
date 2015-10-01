@@ -4,23 +4,16 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 public class PluginSettings {
 
-	private static PluginSettings instance;
+	private static LobbyPluginConfigs confFile;
+	private static LobbyPluginConfigs msgFile;
 
-	private LobbyPluginConfigs confFile;
-	private LobbyPluginConfigs msgFile;
-
-	public PluginSettings() {
-		instance = this;
-		loadSettings();
-	}
-
-	public void loadSettings() {
-		this.confFile = new LobbyPluginConfigs("config.yml");
+	public static void loadSettings() {
+		confFile = new LobbyPluginConfigs("config.yml");
 		confFile.saveDefaultConfig();
 
 		new LobbyPluginConfigs("messages/", "messages-de.yml").saveDefaultConfig();
 
-		this.msgFile = new LobbyPluginConfigs("messages/",
+		msgFile = new LobbyPluginConfigs("messages/",
 				"messages-" + getConfig().getString(ConfigPaths.LANGUAGE) + ".yml");
 		msgFile.saveDefaultConfig();
 
@@ -29,18 +22,24 @@ public class PluginSettings {
 
 	}
 
-	public FileConfiguration getConfig() {
+	public static void reloadPlugin() {
+		// TODO
+	}
+
+	public static FileConfiguration getConfig() {
 		return confFile.getConfig();
 	}
 
-	public FileConfiguration getMessages() {
+	public static void saveConfig() {
+		confFile.saveConfig();
+	}
+
+	public static FileConfiguration getMessages() {
 		return msgFile.getConfig();
 	}
 
-	public static PluginSettings getInstance() {
-		if (instance == null) {
-			instance = new PluginSettings();
-		}
-		return instance;
+	public static void saveMessages() {
+		msgFile.saveConfig();
 	}
+
 }

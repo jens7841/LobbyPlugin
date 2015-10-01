@@ -24,6 +24,10 @@ public class LobbyPluginCommand implements CommandExecutor {
 
 		} catch (NoPermissionsException e) {
 			sender.sendMessage(Msg.s("noPermissions", new Object[0]));
+		} catch (NotEnoughArgumentsException e) {
+			sender.sendMessage(e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return true;
 	}

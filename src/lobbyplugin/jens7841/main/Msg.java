@@ -4,10 +4,10 @@ import org.bukkit.ChatColor;
 
 public class Msg {
 
-	public static String s(String str, Object[] objects) {
-		String nachricht = PluginSettings.getInstance().getMessages().getString(str);
+	public static String s(String str, Object... objects) {
+		String nachricht = PluginSettings.getMessages().getString(str);
 		if (nachricht == null) {
-			return ChatColor.RED + "ERROR: MESSAGE NOT FOUND";
+			return ChatColor.RED + "LobbyPlugin ERROR: MESSAGE NOT FOUND";
 		} else {
 
 			nachricht = ChatColor.translateAlternateColorCodes('&', nachricht);

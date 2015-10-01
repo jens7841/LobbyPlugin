@@ -116,7 +116,7 @@ public class HideItem {
 	}
 
 	private void load() {
-		FileConfiguration cfg = PluginSettings.getInstance().getConfig();
+		FileConfiguration cfg = PluginSettings.getConfig();
 
 		String p = "HidePlayersTool.";
 

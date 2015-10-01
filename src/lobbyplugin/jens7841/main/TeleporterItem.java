@@ -31,7 +31,7 @@ public class TeleporterItem {
 	}
 
 	private void load() {
-		FileConfiguration cfg = PluginSettings.getInstance().getConfig();
+		FileConfiguration cfg = PluginSettings.getConfig();
 
 		Material m = Material.getMaterial(cfg.getString(ConfigPaths.LOBBYTELEPORTER_ITEM).toUpperCase());
 		if (m == null)

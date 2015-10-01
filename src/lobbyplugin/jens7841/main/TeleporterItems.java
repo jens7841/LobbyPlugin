@@ -65,7 +65,7 @@ public class TeleporterItems {
 	}
 
 	public static void load() {
-		FileConfiguration cfg = PluginSettings.getInstance().getConfig();
+		FileConfiguration cfg = PluginSettings.getConfig();
 		String p = "LobbyTeleporter.Items.";
 
 		for (String str : cfg.getConfigurationSection("LobbyTeleporter.Items").getKeys(false)) {
