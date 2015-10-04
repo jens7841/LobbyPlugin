@@ -14,8 +14,8 @@ public class LobbyPluginCommand implements CommandExecutor {
 
 			if (args.length > 0) {
 
-				if (args[0].equalsIgnoreCase("lobbyteleporter")) {
-					LobbyTeleporter.run(sender, cmd, label, args);
+				if (args[0].equalsIgnoreCase("teleporter")) {
+					Teleporter.run(sender, cmd, label, args);
 					return true;
 				}
 			}

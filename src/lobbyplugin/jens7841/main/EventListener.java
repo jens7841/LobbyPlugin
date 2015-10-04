@@ -25,7 +25,7 @@ public class EventListener implements Listener {
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
-		TeleporterItem.getInstance().giveItem(p);
+		TeleporterItem.giveItem(p);
 		HideItem.getInstance().giveItem(p);
 	}
 
@@ -33,8 +33,8 @@ public class EventListener implements Listener {
 	public void onPlayerClickItem(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
 		if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK)
-				&& (p.getInventory().getHeldItemSlot() == TeleporterItem.getInstance().getSlot() && e.getItem() != null)
-				&& (e.getItem().equals(TeleporterItem.getInstance().getItem()))) {
+				&& (p.getInventory().getHeldItemSlot() == TeleporterItem.getSlot() && e.getItem() != null)
+				&& (e.getItem().equals(TeleporterItem.getItem()))) {
 			TeleporterItem.openInventory(p, e);
 		}
 
@@ -52,7 +52,7 @@ public class EventListener implements Listener {
 	public void onPlayerInvClick(InventoryClickEvent e) {
 		if (e.getWhoClicked() instanceof Player) {
 			Player p = (Player) e.getWhoClicked();
-			if (e.getInventory().getName().equals(TeleporterItem.getInstance().getInventoryName())) {
+			if (e.getInventory().getName().equals(TeleporterItem.getInventoryName())) {
 				TeleporterItems tpi = TeleporterItems.items.get(e.getSlot());
 				if (e.getSlot() != -999 && tpi != null && tpi.getItem().equals(e.getCurrentItem())) {
 					tpi.performAction(p);

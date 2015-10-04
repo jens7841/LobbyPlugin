@@ -17,20 +17,20 @@ import net.md_5.bungee.api.ChatColor;
 
 public class TeleporterItem {
 
-	private static TeleporterItem instance;
+	private static boolean enabled;
+	private static Material item;
+	private static int amount;
+	private static short durability;
+	private static String displayname;
+	private static List<String> lores;
+	private static int slot;
+	private static String inventoryName;
+	private static int size;
 
-	private boolean enabled;
-	private ItemStack item;
-	private int slot;
-	private String inventoryName;
-	private int size;
-
-	public TeleporterItem() {
-		instance = this;
-		load();
+	private TeleporterItem() {
 	}
 
-	private void load() {
+	public static void load() {
 		FileConfiguration cfg = PluginSettings.getConfig();
 
 		Material m = Material.getMaterial(cfg.getString(ConfigPaths.LOBBYTELEPORTER_ITEM).toUpperCase());
@@ -40,55 +40,61 @@ public class TeleporterItem {
 		slot = cfg.getInt(ConfigPaths.LOBBYTELEPORTER_Slot);
 		if (slot < 0 || slot > 8)
 			throw new IllegalArgumentException("The Slot of the TeleportItem is < 0 or > 8");
-		int amount = cfg.getInt(ConfigPaths.LOBBYTELEPORTER_AMOUNT);
+		amount = cfg.getInt(ConfigPaths.LOBBYTELEPORTER_AMOUNT);
 		if (amount < 1)
 			throw new IllegalArgumentException("The amount of the TeleportItem is < 1");
 		int i = cfg.getInt(ConfigPaths.LOBBYTELEPORTER_ITEMDAMAGE);
 		if (i > Short.MAX_VALUE)
 			throw new IllegalArgumentException("The ItemDamage of the TeleportItem is to high!");
 
-		this.item = new ItemStack(m);
-		this.item.setAmount(amount);
-		this.item.setDurability((short) i);
-		ItemMeta imeta = this.item.getItemMeta();
-		imeta.setDisplayName(
-				ChatColor.translateAlternateColorCodes('&', cfg.getString(ConfigPaths.LOBBYTELEPORTER_ITEMNAME)));
-		List<String> lores = new ArrayList<String>();
+		durability = (short) i;
+
+		displayname = ChatColor.translateAlternateColorCodes('&', cfg.getString(ConfigPaths.LOBBYTELEPORTER_ITEMNAME));
+
+		lores = new ArrayList<String>();
 		for (String str : cfg.getStringList(ConfigPaths.LOBBYTELEPORTER_LORES)) {
 			lores.add(ChatColor.translateAlternateColorCodes('&', str));
 		}
-		imeta.setLore(lores);
-		this.item.setItemMeta(imeta);
 
-		this.inventoryName = ChatColor.translateAlternateColorCodes('&',
+		inventoryName = ChatColor.translateAlternateColorCodes('&',
 				cfg.getString(ConfigPaths.LOBBYTELEPORTER_INVENTORYNAME));
-		this.enabled = cfg.getBoolean(ConfigPaths.LOBBYTELEPORTER_ENABLE);
-		this.size = cfg.getInt(ConfigPaths.LOBBYTELEPORTER_INVENTORYSIZE);
-
+		enabled = cfg.getBoolean(ConfigPaths.LOBBYTELEPORTER_ENABLE);
+		size = cfg.getInt(ConfigPaths.LOBBYTELEPORTER_INVENTORYSIZE);
 	}
 
-	public int getSlot() {
-		return slot;
-	}
-
-	public void giveItem(Player p) {
-		if (p.hasPermission(Permissions.TELEPORTER_USE)) {
-			p.getInventory().setItem(slot, item);
+	public static void giveToAllPlayers() {
+		for (Player pe : Bukkit.getOnlinePlayers()) {
+			giveItem(pe);
 		}
 	}
 
-	public String getInventoryName() {
+	public static int getSlot() {
+		return slot;
+	}
+
+	public static void giveItem(Player p) {
+		if (p.hasPermission(Permissions.TELEPORTER_USE)) {
+			p.getInventory().setItem(slot, getItem());
+		}
+	}
+
+	public static String getInventoryName() {
 		return inventoryName;
 	}
 
-	public ItemStack getItem() {
-		return item;
+	public static ItemStack getItem() {
+		ItemStack istack = new ItemStack(item, amount, durability);
+		ItemMeta imeta = istack.getItemMeta();
+		imeta.setDisplayName(displayname);
+		imeta.setLore(lores);
+		istack.setItemMeta(imeta);
+		return istack;
 	}
 
 	public static void openInventory(Player p, PlayerInteractEvent e) {
-		if (instance.enabled) {
+		if (enabled) {
 			if (p.hasPermission(Permissions.TELEPORTER_USE)) {
-				Inventory inv = Bukkit.createInventory(null, instance.size * 9, instance.inventoryName);
+				Inventory inv = Bukkit.createInventory(null, size * 9, inventoryName);
 				for (Entry<Integer, TeleporterItems> i : TeleporterItems.items.entrySet()) {
 
 					inv.setItem(i.getValue().getSlot(), i.getValue().getItem());
@@ -100,11 +106,21 @@ public class TeleporterItem {
 		}
 	}
 
-	public static TeleporterItem getInstance() {
-		if (instance == null) {
-			instance = new TeleporterItem();
-		}
-		return instance;
+	public static void setItemName(String name) {
+		PluginSettings.getConfig().set(ConfigPaths.LOBBYTELEPORTER_ITEMNAME, name);
+		displayname = ChatColor.translateAlternateColorCodes('&', name);
+		PluginSettings.saveConfig();
+	}
+
+	public static void setItem(ItemStack item) {
+		amount = item.getAmount();
+		FileConfiguration config = PluginSettings.getConfig();
+		config.set(ConfigPaths.LOBBYTELEPORTER_AMOUNT, amount);
+		durability = item.getDurability();
+		config.set(ConfigPaths.LOBBYTELEPORTER_ITEMDAMAGE, durability);
+		TeleporterItem.item = item.getType();
+		config.set(ConfigPaths.LOBBYTELEPORTER_ITEM, item.toString());
+		PluginSettings.saveConfig();
 	}
 
 }

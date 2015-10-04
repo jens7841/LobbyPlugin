@@ -18,7 +18,7 @@ public class PluginSettings {
 		msgFile.saveDefaultConfig();
 
 		TeleporterItems.load();
-		new TeleporterItem();
+		TeleporterItem.load();
 
 	}
 

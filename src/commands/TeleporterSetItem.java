@@ -3,15 +3,18 @@ package commands;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import lobbyplugin.jens7841.main.ConfigPaths;
 import lobbyplugin.jens7841.main.Msg;
 import lobbyplugin.jens7841.main.Permissions;
 import lobbyplugin.jens7841.main.PluginSettings;
+import lobbyplugin.jens7841.main.TeleporterItem;
 import net.md_5.bungee.api.ChatColor;
 
-public class LobbyTeleporterChangeItem {
+public class TeleporterSetItem {
 
 	public static void run(CommandSender sender, Command cmd, String label, String[] args) throws Exception {
 		if (sender instanceof Player) {
@@ -25,16 +28,21 @@ public class LobbyTeleporterChangeItem {
 	}
 
 	private static void runPlayer(Player p, Command cmd, String label, String[] args) {
-		if (Material.AIR.equals(p.getItemInHand().getType())) {
+		ItemStack itemInHand = p.getItemInHand();
+		if (Material.AIR.equals(itemInHand.getType())) {
 			p.sendMessage(Msg.s("error", "Item in hand can not be AIR"));
 			return;
 		}
 
-		p.sendMessage(ChatColor.GREEN + "Successful chaned Teleporter Item from "
-				+ PluginSettings.getConfig().getString(ConfigPaths.LOBBYTELEPORTER_ITEM) + " to "
-				+ p.getItemInHand().getType().toString()); // TEST
+		FileConfiguration config = PluginSettings.getConfig();
+		p.sendMessage(ChatColor.GREEN + "Successful chaned Teleporter Item from \n" + ChatColor.YELLOW
+				+ config.getString(ConfigPaths.LOBBYTELEPORTER_ITEM) + " | Amount: "
+				+ config.getInt(ConfigPaths.LOBBYTELEPORTER_AMOUNT) + "\n" + ChatColor.GREEN + "to" + "\n"
+				+ ChatColor.YELLOW + itemInHand.getType().toString() + " | Amount: " + itemInHand.getAmount());
 
-		PluginSettings.getConfig().set(ConfigPaths.LOBBYTELEPORTER_ITEM, p.getItemInHand().getType().toString());
+		config.set(ConfigPaths.LOBBYTELEPORTER_ITEM, itemInHand.getType().toString());
+		TeleporterItem.setItem(itemInHand);
+		TeleporterItem.giveToAllPlayers();
 		PluginSettings.saveConfig();
 	}
 
