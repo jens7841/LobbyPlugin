@@ -33,8 +33,8 @@ public class TeleporterItem {
 	public static void load() {
 		FileConfiguration cfg = PluginSettings.getConfig();
 
-		Material m = Material.getMaterial(cfg.getString(ConfigPaths.LOBBYTELEPORTER_ITEM).toUpperCase());
-		if (m == null)
+		item = Material.getMaterial(cfg.getString(ConfigPaths.LOBBYTELEPORTER_ITEM).toUpperCase());
+		if (item == null)
 			throw new IllegalArgumentException("The Material of the TeleportItem could not be found! "
 					+ cfg.getString(ConfigPaths.LOBBYTELEPORTER_ITEM));
 		slot = cfg.getInt(ConfigPaths.LOBBYTELEPORTER_Slot);
