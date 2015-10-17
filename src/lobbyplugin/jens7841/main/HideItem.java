@@ -16,34 +16,30 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class HideItem {
 
-	public ArrayList<Player> playerHidesPlayersList = new ArrayList<Player>();
-	private ArrayList<Player> cooldownPlayerListe = new ArrayList<Player>();
+	public static ArrayList<Player> playerHidesPlayersList = new ArrayList<Player>();
+	private static ArrayList<Player> cooldownPlayerListe = new ArrayList<Player>();
 
-	private static HideItem instance;
+	private static boolean enabled;
 
-	private boolean enabled;
+	private static boolean sendShowMessage;
+	private static boolean showShowParticle;
+	private static boolean playShowSound;
 
-	private boolean sendShowMessage;
-	private boolean showShowParticle;
-	private boolean playShowSound;
+	private static boolean sendHideMessage;
+	private static boolean showHideParticle;
+	private static boolean playHideSound;
 
-	private boolean sendHideMessage;
-	private boolean showHideParticle;
-	private boolean playHideSound;
+	private static int slot;
+	private static int cooldown;
 
-	private int slot;
-	private int cooldown;
+	private static ItemStack hideItem;
+	private static ItemStack showItem;
 
-	private ItemStack hideItem;
-	private ItemStack showItem;
-
-	public HideItem() {
-		instance = this;
-		load();
+	private HideItem() {
 	}
 
 	@SuppressWarnings("deprecation")
-	public void playerKlick(Player p, PlayerInteractEvent e) {
+	public static void playerKlick(Player p, PlayerInteractEvent e) {
 
 		if (isEnabled()) {
 			if (p.hasPermission(Permissions.HIDE_PLAYERS_TOOL_USE)) {
@@ -97,7 +93,7 @@ public class HideItem {
 		}
 	}
 
-	private void cooldown(final Player p) {
+	private static void cooldown(final Player p) {
 		cooldownPlayerListe.add(p);
 
 		Bukkit.getScheduler().scheduleSyncDelayedTask(LobbyPlugin.instance, new Runnable() {
@@ -109,13 +105,13 @@ public class HideItem {
 		}, cooldown * 20);
 	}
 
-	public void giveItem(Player p) {
+	public static void giveItem(Player p) {
 		if (p.hasPermission(Permissions.HIDE_PLAYERS_TOOL_USE)) {
 			p.getInventory().setItem(getSlot(), getHideItem());
 		}
 	}
 
-	private void load() {
+	public static void load() {
 		FileConfiguration cfg = PluginSettings.getConfig();
 
 		String p = "HidePlayersTool.";
@@ -193,26 +189,19 @@ public class HideItem {
 		cooldown = cfg.getInt(ConfigPaths.HIDE_PLAYERS_TOOL_COOLDOWN);
 	}
 
-	public static HideItem getInstance() {
-		if (instance == null) {
-			instance = new HideItem();
-		}
-		return instance;
-	}
-
-	private boolean isEnabled() {
+	private static boolean isEnabled() {
 		return enabled;
 	}
 
-	public int getSlot() {
+	public static int getSlot() {
 		return slot;
 	}
 
-	public ItemStack getHideItem() {
+	public static ItemStack getHideItem() {
 		return hideItem;
 	}
 
-	public ItemStack getShowItem() {
+	public static ItemStack getShowItem() {
 		return showItem;
 	}
 
