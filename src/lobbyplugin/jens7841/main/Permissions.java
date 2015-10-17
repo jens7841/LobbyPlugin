@@ -19,6 +19,7 @@ public class Permissions {
 
 	public static final String COMMAND_TELEPORTER_SETNAME = TELEPORTER_PREFIX + "setname";
 	public static final String COMMAND_TELEPORTER_CHANGEITEM = TELEPORTER_PREFIX + "setitem";
+	public static final String COMMAND_RELOAD = PREFIX + "reload";
 
 	/*
 	 * Hide Players Tool
