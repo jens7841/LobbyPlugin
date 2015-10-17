@@ -28,6 +28,11 @@ public class PluginSettings {
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
+		try {
+			HideItem.load();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 
 	}
 
