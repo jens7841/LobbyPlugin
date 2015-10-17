@@ -17,8 +17,16 @@ public class PluginSettings {
 				"messages-" + getConfig().getString(ConfigPaths.LANGUAGE) + ".yml");
 		msgFile.saveDefaultConfig();
 
-		TeleporterItems.load();
-		TeleporterItem.load();
+		try {
+			TeleporterItems.load();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		try {
+			TeleporterItem.load();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 
 	}
 
