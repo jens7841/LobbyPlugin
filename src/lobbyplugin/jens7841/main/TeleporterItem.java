@@ -73,8 +73,13 @@ public class TeleporterItem {
 	}
 
 	public static void giveItem(Player p) {
+		if (!PluginSettings.getConfig().getBoolean(ConfigPaths.LOBBYTELEPORTER_ENABLE)) {
+			return;
+		}
 		if (p.hasPermission(Permissions.TELEPORTER_USE)) {
 			p.getInventory().setItem(slot, getItem());
+		} else {
+			p.getInventory().setItem(slot, null);
 		}
 	}
 
@@ -96,7 +101,6 @@ public class TeleporterItem {
 			if (p.hasPermission(Permissions.TELEPORTER_USE)) {
 				Inventory inv = Bukkit.createInventory(null, size * 9, inventoryName);
 				for (Entry<Integer, TeleporterItems> i : TeleporterItems.items.entrySet()) {
-
 					inv.setItem(i.getValue().getSlot(), i.getValue().getItem());
 				}
 				p.openInventory(inv);
