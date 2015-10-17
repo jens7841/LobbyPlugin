@@ -18,6 +18,10 @@ public class LobbyPluginCommand implements CommandExecutor {
 					Teleporter.run(sender, cmd, label, args);
 					return true;
 				}
+				if (args[0].equalsIgnoreCase("reload") || args[0].equalsIgnoreCase("rl")) {
+					Reload.run(sender, cmd, label, args);
+					return true;
+				}
 			}
 
 			sender.sendMessage("HELP!"); // TODO add help
