@@ -189,6 +189,8 @@ public class HideItem {
 		sendShowMessage = cfg.getBoolean(ConfigPaths.SHOW_ITEM_SENDMESSAGE);
 		showShowParticle = cfg.getBoolean(ConfigPaths.SHOW_ITEM_SHOW_PARTICLE_EFFECT);
 		playShowSound = cfg.getBoolean(ConfigPaths.SHOW_ITEM_PLAY_SOUND_EFFECT);
+
+		cooldown = cfg.getInt(ConfigPaths.HIDE_PLAYERS_TOOL_COOLDOWN);
 	}
 
 	public static HideItem getInstance() {
