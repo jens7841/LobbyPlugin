@@ -28,8 +28,8 @@ public class TeleporterItems {
 	public TeleporterItems(int nummer, String item, int itemDamage, int amount, String itemName, List<String> lores,
 			int slot, boolean teleport, String world, double x, double y, double z, float yaw, float pitch,
 			boolean sendMesage, String message) {
-		if (amount < 1)
-			throw new IllegalArgumentException("Amount of the Item (" + nummer + ") is < 1");
+		if (amount < 0)
+			throw new IllegalArgumentException("Amount of the Item (" + nummer + ") is < 0");
 		if (slot < 0)
 			throw new IllegalArgumentException("Slot of Item (" + nummer + ") is < 0");
 		Material m = Material.getMaterial(item);
