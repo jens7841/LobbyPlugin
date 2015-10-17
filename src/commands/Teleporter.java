@@ -15,6 +15,10 @@ public class Teleporter {
 				TeleporterSetItem.run(sender, cmd, label, args);
 				return;
 			}
+			if (args[1].equalsIgnoreCase("setenabled")) {
+				TeleporterEnable.run(sender, cmd, label, args);
+				return;
+			}
 		}
 		sender.sendMessage("HELP lobbyteleporter"); // TODO add help
 	}

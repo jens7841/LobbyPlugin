@@ -127,4 +127,10 @@ public class TeleporterItem {
 		PluginSettings.saveConfig();
 	}
 
+	public static void setEnabled(boolean bool) {
+		enabled = bool;
+		PluginSettings.getConfig().set(ConfigPaths.LOBBYTELEPORTER_ENABLE, bool);
+		PluginSettings.saveConfig();
+	}
+
 }
