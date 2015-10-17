@@ -31,7 +31,11 @@ public class TeleporterEnable {
 
 		sender.sendMessage(Msg.s("successfullyFromTo", config.get(ConfigPaths.LOBBYTELEPORTER_ENABLE), bool));
 
-		TeleporterItem.setEnabled(Boolean.getBoolean(bool));
+		if (bool.equalsIgnoreCase("true")) {
+			TeleporterItem.setEnabled(true);
+		} else {
+			TeleporterItem.setEnabled(false);
+		}
 
 	}
 
