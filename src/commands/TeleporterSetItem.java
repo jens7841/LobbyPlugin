@@ -61,7 +61,7 @@ public class TeleporterSetItem {
 				+ PluginSettings.getConfig().getString(ConfigPaths.LOBBYTELEPORTER_ITEM) + " to "
 				+ material.toString());
 		PluginSettings.getConfig().set(ConfigPaths.LOBBYTELEPORTER_ITEM, material.toString());
-		PluginSettings.saveConfig(); // TEST
+		PluginSettings.saveConfig();
 
 	}
 }
