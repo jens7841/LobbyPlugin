@@ -15,7 +15,8 @@ public class Teleporter {
 				TeleporterSetItem.run(sender, cmd, label, args);
 				return;
 			}
-			if (args[1].equalsIgnoreCase("setenabled")) {
+			if (args[1].equalsIgnoreCase("setenabled") || args[1].equalsIgnoreCase("enable")
+					|| args[1].equalsIgnoreCase("setenable")) {
 				TeleporterEnable.run(sender, cmd, label, args);
 				return;
 			}
