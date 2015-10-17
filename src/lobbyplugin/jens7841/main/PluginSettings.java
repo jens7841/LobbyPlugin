@@ -1,5 +1,6 @@
 package lobbyplugin.jens7841.main;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class PluginSettings {
@@ -31,7 +32,8 @@ public class PluginSettings {
 	}
 
 	public static void reloadPlugin() {
-		// TODO
+		Bukkit.getPluginManager().disablePlugin(LobbyPlugin.instance);
+		Bukkit.getPluginManager().enablePlugin(LobbyPlugin.instance);
 	}
 
 	public static FileConfiguration getConfig() {

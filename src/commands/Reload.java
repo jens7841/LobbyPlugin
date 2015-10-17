@@ -1,12 +1,11 @@
 package commands;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import lobbyplugin.jens7841.main.LobbyPlugin;
 import lobbyplugin.jens7841.main.Msg;
 import lobbyplugin.jens7841.main.Permissions;
+import lobbyplugin.jens7841.main.PluginSettings;
 
 public class Reload {
 
@@ -15,9 +14,7 @@ public class Reload {
 			throw new NoPermissionsException();
 		}
 
-		Bukkit.getPluginManager().disablePlugin(LobbyPlugin.instance);
-		Bukkit.getPluginManager().enablePlugin(LobbyPlugin.instance);
-
+		PluginSettings.reloadPlugin();
 		sender.sendMessage(Msg.s("reloadComplete"));
 	}
 
