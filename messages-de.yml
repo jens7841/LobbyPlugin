@@ -1,6 +1,8 @@
 noPermissions: '&cDu besitzt keine Rechte dafür!'
 reloadComplete: '&aDas LobbyPlugin wurde neu geladen!'
 joinMessage: '&e{0} ist beigetreten.'
+successfullyTo: '&aErfolgreich zu {0} geändert!'
+successfullyFromTo: '&aErfolgreich von {0} zu {1} geändert!'
 leaveMessage: '&e{0} hat das Spiel verlassen.'
 showMessage: '&aDu hast alle Spieler sichtbar gemacht.'
 hideMessage: '&cDu hast alle Spieler unsichtbar gemacht.'
