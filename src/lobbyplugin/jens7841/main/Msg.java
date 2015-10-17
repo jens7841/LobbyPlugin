@@ -11,7 +11,7 @@ public class Msg {
 		} else {
 
 			nachricht = ChatColor.translateAlternateColorCodes('&', nachricht);
-			if (objects.length == 0)
+			if (objects == null || objects.length == 0)
 				return nachricht;
 			int i = 0;
 			for (Object obj : objects) {
