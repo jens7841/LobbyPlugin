@@ -107,7 +107,11 @@ public class HideItem {
 
 	public static void giveItem(Player p) {
 		if (p.hasPermission(Permissions.HIDE_PLAYERS_TOOL_USE)) {
-			p.getInventory().setItem(getSlot(), getHideItem());
+			if (playerHidesPlayersList.contains(p)) {
+				p.getInventory().setItem(getSlot(), getShowItem());
+			} else {
+				p.getInventory().setItem(getSlot(), getHideItem());
+			}
 		}
 	}
 
