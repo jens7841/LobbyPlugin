@@ -123,7 +123,7 @@ public class TeleporterItem {
 		durability = item.getDurability();
 		config.set(ConfigPaths.LOBBYTELEPORTER_ITEMDAMAGE, durability);
 		TeleporterItem.item = item.getType();
-		config.set(ConfigPaths.LOBBYTELEPORTER_ITEM, item.toString());
+		config.set(ConfigPaths.LOBBYTELEPORTER_ITEM, item.getType().toString());
 		PluginSettings.saveConfig();
 	}
 
