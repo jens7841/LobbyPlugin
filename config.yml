@@ -10,7 +10,7 @@ LobbyTeleporter:
   Slot: 0
   InventorySize: 1
   InventoryName: '&bNavigation'
-  
+
   Items:
     1:
       Item: log
@@ -48,10 +48,12 @@ LobbyTeleporter:
       pitch: 0
       sendMessage: true
       Message: '&aBald verfügbar!'
+
 HidePlayersTool:
   Slot: 1
   Enable: true
   Cooldown: 5
+
   HidePlayersItem:
     Item: blaze_rod
     ItemDamage: 0
@@ -63,6 +65,7 @@ HidePlayersTool:
     sendMessage: true
     showParticleEffect: true
     playSoundEffect: true
+
   ShowPlayersItem:
     Item: stick
     ItemDamage: 0
@@ -74,4 +77,7 @@ HidePlayersTool:
     sendMessage: true
     showParticleEffect: true
     playSoundEffect: true
+
 Language: 'de'
+#Language: 'en'
+# You can switch between 'de' (German) and 'en' (English)
