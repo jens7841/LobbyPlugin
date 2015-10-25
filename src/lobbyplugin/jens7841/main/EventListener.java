@@ -75,7 +75,7 @@ public class EventListener implements Listener {
 	}
 
 	@EventHandler
-	public void onDropItem(final PlayerDropItemEvent e) {
+	public void onDropItem(PlayerDropItemEvent e) {
 
 		Player p = e.getPlayer();
 
