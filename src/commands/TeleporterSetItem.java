@@ -35,10 +35,10 @@ public class TeleporterSetItem {
 		}
 
 		FileConfiguration config = PluginSettings.getConfig();
-		p.sendMessage(ChatColor.GREEN + "Successful chaned Teleporter Item from \n" + ChatColor.YELLOW
-				+ config.getString(ConfigPaths.LOBBYTELEPORTER_ITEM) + " | Amount: "
-				+ config.getInt(ConfigPaths.LOBBYTELEPORTER_AMOUNT) + "\n" + ChatColor.GREEN + "to" + "\n"
-				+ ChatColor.YELLOW + itemInHand.getType().toString() + " | Amount: " + itemInHand.getAmount());
+		p.sendMessage(Msg.s("successfullyFromTo",
+				config.getString(ConfigPaths.LOBBYTELEPORTER_ITEM) + " | Amount: "
+						+ config.getInt(ConfigPaths.LOBBYTELEPORTER_AMOUNT),
+				itemInHand.getType().toString() + " | Amount: " + itemInHand.getAmount()));
 
 		config.set(ConfigPaths.LOBBYTELEPORTER_ITEM, itemInHand.getType().toString());
 		TeleporterItem.setItem(itemInHand);

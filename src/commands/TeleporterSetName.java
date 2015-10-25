@@ -16,7 +16,7 @@ public class TeleporterSetName {
 	public static void run(CommandSender sender, Command cmd, String label, String[] args) throws Exception {
 		if (args.length <= 2) {
 			throw new NotEnoughArgumentsException(
-					Msg.s("error", "/" + cmd.getName() + " " + args[0] + " " + args[1] + " <New ItemName>")); // TEST
+					Msg.s("error", "/" + cmd.getName() + " " + args[0] + " " + args[1] + " <New ItemName>"));
 		}
 		if (sender instanceof Player) {
 			if (!sender.hasPermission(Permissions.COMMAND_TELEPORTER_SETNAME)) {
@@ -34,11 +34,10 @@ public class TeleporterSetName {
 		}
 
 		String neuerName = builder.toString();
-		sender.sendMessage(ChatColor.GREEN + "Teleporter ItemName sucessfully changed from\n" + ChatColor.RESET
-				+ ChatColor.translateAlternateColorCodes('&',
-						PluginSettings.getConfig().getString(ConfigPaths.LOBBYTELEPORTER_ITEMNAME))
-				+ "\n" + ChatColor.GREEN + "to" + "\n" + ChatColor.RESET
-				+ ChatColor.translateAlternateColorCodes('&', neuerName));
+		sender.sendMessage(Msg.s("successfullyFromTo",
+				ChatColor.translateAlternateColorCodes('&',
+						PluginSettings.getConfig().getString(ConfigPaths.LOBBYTELEPORTER_ITEMNAME)),
+				ChatColor.translateAlternateColorCodes('&', neuerName)));
 
 		TeleporterItem.setItemName(neuerName);
 		TeleporterItem.giveToAllPlayers();
