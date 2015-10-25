@@ -1,4 +1,4 @@
-package lobbyplugin.jens7841.main;
+package anvilInventory;
 
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
@@ -6,7 +6,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import anvilInventory.FakeAnvilv_1_8_R3;
 import net.minecraft.server.v1_8_R3.ChatMessage;
 import net.minecraft.server.v1_8_R3.EntityPlayer;
 import net.minecraft.server.v1_8_R3.PacketPlayOutOpenWindow;
