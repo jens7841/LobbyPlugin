@@ -7,4 +7,9 @@ leaveMessage: '&e{0} hat das Spiel verlassen.'
 showMessage: '&aDu hast alle Spieler sichtbar gemacht.'
 hideMessage: '&cDu hast alle Spieler unsichtbar gemacht.'
 cooldownMessage: '&cDu musst kurz warten bevor du das Item wieder benutzen kannst!'
-error: '&4ERROR: {0}'
+error: '&cERROR: {0}'
+help: '</n>&2----------</n>
+&2[&3Lobby-Plugin&2] </n>
+&a/lp reload &6| Laed das Plugin und alle Configs neu!</n>
+&a/lp teleporter &6| Zeige alle Befehle fuer den Teleporter an!</n>
+&2----------</n>'

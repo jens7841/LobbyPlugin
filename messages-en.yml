@@ -8,3 +8,8 @@ showMessage: '&aYou have done all players visible.'
 hideMessage: '&cYou have done all players invisible.'
 cooldownMessage: '&cYou have to wait until you can use the item again!'
 error: '&cERROR: {0}'
+help: '</n>&2----------</n>
+&2[&3Lobby-Plugin&2] </n>
+&a/lp reload &6| Reload the LobbyPlugin and all configs!</n>
+&a/lp teleporter &6| Show all Commands for the Teleporter!</n>
+&2----------</n>'

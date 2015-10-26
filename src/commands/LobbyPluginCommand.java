@@ -24,7 +24,7 @@ public class LobbyPluginCommand implements CommandExecutor {
 				}
 			}
 
-			sender.sendMessage(Msg.s("help"));
+			sender.sendMessage(Msg.s("help").replace("</n>", "\n"));
 
 		} catch (NoPermissionsException e) {
 			sender.sendMessage(Msg.s("noPermissions", new Object[0]));
